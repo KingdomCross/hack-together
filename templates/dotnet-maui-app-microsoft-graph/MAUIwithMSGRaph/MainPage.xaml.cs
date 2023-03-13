@@ -26,12 +26,18 @@ public partial class MainPage : ContentPage
 
     private async void GetUserInfoBtn_Clicked(object sender, EventArgs e)
     {
-        if (graphService == null)
+        [RelayCommand]
+        private async Task LoadUserInformation()
         {
-            graphService = new GraphService();
+            var service = new GraphService();
+            Microsoft.Graph.Models.User user = await service.GetMyDetailsAsync();
+            helloMessage = $"Hello, {user.DisplayName}";
+
+            UserName = user.DisplayName;
+            UserGivenName = user.GivenName;
+            UserSurname = user.Surname;
+            UserPrincipalName = user.UserPrincipalName;
         }
-        user = await graphService.GetMyDetailsAsync();
-        HelloLabel.Text = $"Hello, {user.DisplayName}!";
     }
 }
 

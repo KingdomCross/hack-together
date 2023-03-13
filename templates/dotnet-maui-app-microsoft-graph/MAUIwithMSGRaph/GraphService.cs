@@ -13,7 +13,7 @@ namespace MAUIwithMSGRaph
     internal class GraphService
     {
         private readonly string[] _scopes = new[] { "User.Read" };
-        private const string ClientId = "CLIENT_ID";
+        private const string ClientId = "668f8dd0-b15e-4646-964d-7c3abd583d24";
         private const string TenantId = "common";
         private GraphServiceClient _client;
 
